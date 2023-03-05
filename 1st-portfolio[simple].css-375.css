@@ -1,0 +1,720 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  /* adds animation for all transitions */
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+  margin: 0;
+  padding: 0;
+  -webkit-text-size-adjust: none;
+}
+
+/* Makes sure that everything is 100% height */
+
+html,
+body {
+  /*height: 100%;*/
+  /*overflow: hidden;*/
+  margin: 0px 0px 0px 0px;
+  /*background-color: gainsboro;*/
+  font-family: yu gothic, YuGothic, hiragino kaku gothic pron, メイリオ, Meiryo, sans-serif;
+}
+
+/* gets the actual input out of the way; 
+we're going to style the label instead */
+
+#drawer-toggle {
+  position: absolute;
+  opacity: 0;
+}
+
+#drawer-toggle-label {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  left: 0px;
+  height: 50px;
+  width: 50px;
+  display: block;
+  position: fixed;
+  background: rgba(255, 255, 255, .0);
+  z-index: 1;
+}
+
+/* adds our "hamburger" menu icon */
+
+#drawer-toggle-label:before {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 24px;
+  background: #8d8d8d;
+  left: 13px;
+  top: 18px;
+  box-shadow: 0 6px 0 #8d8d8d, 0 12px 0 #8d8d8d;
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  left: 0px;
+  padding: 10px 10px 10px 70px;
+  height: 75px;
+  margin: 0px 0px 4%;
+  font-size: 25px;
+  line-height: 30px;
+  z-index: 0;
+  text-align: left;
+  background-color: rgb(160, 192, 192);
+
+}
+
+/* drawer menu pane - note the 0px width */
+
+#drawer {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  height: 100%;
+  width: 300px;
+  background: #2f2f2f;
+  /*overflow-x: hidden;*/
+  /*overflow-y: hidden;*/
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* actual page content pane */
+
+#page-content {
+  margin-left: 0px;
+  margin-top: 0px;
+  width: 100%;
+  height: calc(100%);
+  /*overflow-x: hidden;*/
+  /*overflow-y: scroll;*/
+  -webkit-overflow-scrolling: touch;
+  padding: 20px;
+}
+
+/* checked styles (menu open state) */
+
+#drawer-toggle:checked~#drawer-toggle-label {
+  height: 100%;
+  width: calc(100% - 300px);
+  background: rgba(255, 255, 255, .8);
+}
+
+#drawer-toggle:checked~#drawer-toggle-label,
+#drawer-toggle:checked~header {
+  left: 300px;
+}
+
+#drawer-toggle:checked~#drawer {
+  left: 0px;
+}
+
+#drawer-toggle:checked~#page-content {
+  margin-left: 300px;
+}
+
+/* Menu item styles */
+
+#drawer ul {
+  list-style-type: none;
+}
+
+#drawer ul a {
+  display: block;
+  padding: 10px;
+  color: #c7c7c7;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+#drawer ul a:hover {
+  color: white;
+}
+
+/* Responsive MQ */
+
+@media all and (max-width:480px) {
+
+  #drawer-toggle:checked~#drawer-toggle-label {
+      height: 100%;
+      width: calc(100% - 300px);
+  }
+
+  #drawer-toggle:checked~#drawer-toggle-label,
+  #drawer-toggle:checked~header {
+      left: 300px;
+  }
+
+  #drawer-toggle:checked~#drawer {
+      width: calc(100% - 50px);
+      padding: 20px;
+  }
+
+  #drawer-toggle:checked~#page-content {
+      margin-left: calc(100% - 50px);
+  }
+
+}
+
+.social {
+  /*SNSアイコンを右寄りにする*/
+  display: flex;
+  margin-left: auto;
+  /*交差軸を中央に寄せる*/
+  align-items: center;
+  /*間隔を開けて配置する*/
+  justify-content: space-between;
+  /*上・右・下・左の余白を設定*/
+  padding: 2% 2% 0px 0%;
+}
+
+.social {
+  float: left;
+
+}
+
+.social a {
+  /*アイコンのバックグラウンドの大きさを設定*/
+  width: 45px;
+  height: 45px;
+  /*アイコンのバックグラウンドの形を設定*/
+  border-radius: 50%;
+  /*background-color: rgb(160, 192, 192);*/
+  background-color: #8ea99b;
+  display: flex;
+  align-items: center;
+  /*間隔を開けて配置する*/
+  justify-content: center;
+  /*文字下のボーダー削除*/
+  text-decoration: none;
+  /*余白設定*/
+  margin: 0px 10px;
+  /*文字色設定*/
+  color: #000;
+  /*文字の太さを設定*/
+  font-weight: bold;
+}
+
+.social a:hover {
+  background-color: #778899;
+  /*ホバーした時の文字色が変わるまでの時間を設定*/
+  transition: all 0.3s;
+  /*ホバーした時、ボタンサイズが変わる倍率を設定*/
+  transform: scale(1.3);
+}
+
+.name {
+  font-size: 35px;
+  font-family: "游明朝体", "Yu Mincho", YuMincho, 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'HiraMinProN-W3', "HGS明朝E", 'ＭＳ 明朝', 'MS Mincho', serif !important;
+  color: #333;
+  /*文字の行間*/
+  letter-spacing: 5px;
+  /*横設定*/
+  width: 55%;
+  /*縦設定*/
+  height: 70%;
+  /*ブロックのフロー方向を設定*/
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  /*上下方向の揃え位置を指定する*/
+  vertical-align: middle;
+  margin-top: 35%;
+}
+
+.box {
+  height: 282vh;
+  text-align: right;
+  overflow-y: hidden;
+  margin: 8em 0em 35px;
+}
+
+.typewriter {
+  /*ブロックのフロー方向を設定*/
+  -ms-writing-mode: tb-rl;
+  writing-mode: horizontal-tb;
+  text-orientation: upright;
+  /*右に配置する*/
+  float: none;
+  /*margin: 0px 4% 10% 100%;
+  */
+  /*文字と文字の間隔を設定*/
+  letter-spacing: 7px;
+  /*display: block;*/
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  padding: 0px 0px 0px;
+  /*タイプライター設定*/
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.typewriter span {
+  display: inline-block;
+  width: 10ch;
+  font: bold 150% Consolas, Monaco, monospace;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 400;
+  border-right: 3px solid transparent;
+}
+
+.animation span {
+  animation: typing 3s steps(23), caret 0.3s steps(1) infinite;
+}
+
+@keyframes typing {
+  from {
+      width: 0;
+  }
+}
+
+@keyframes caret {
+  50% {
+      border-right-color: currentColor;
+  }
+}
+
+.profile {
+  text-align: left;
+  padding: 0px 0px 35px;
+  margin: 0px 0px 20px;
+  overflow-y: hidden;
+  display: grid;
+  grid-template-columns: 23em;
+  grid-template-rows: 15em 3em 9em 3em 15em 3em 15em 3em 4em;
+  justify-content: flex-end;
+}
+
+.img {
+  max-width: 361px;
+  margin: auto;
+}
+
+img {
+  width: 100%;
+  text-align: center;
+}
+
+.fifth {
+  padding: 0px 0px 35px;
+  writing-mode: horizontal-tb;
+
+  font-size: 16px;
+  font-family: "游明朝体", "Yu Mincho", YuMincho, 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'HiraMinProN-W3', "HGS明朝E", 'ＭＳ 明朝', 'MS Mincho', serif !important;
+  /*数字を縦書きにする*/
+  text-orientation: upright;
+  grid-column: 1/ 2;
+  grid-row: 9/ 10
+}
+
+.table-4 {
+  writing-mode: horizontal-tb;
+  margin: 0em 0em 0em 0em;
+  grid-column: 1/ 2;
+  grid-row: 8/ 9
+}
+
+.fourth {
+  padding: 0px 0px 35px;
+  writing-mode: horizontal-tb;
+
+  font-size: 16px;
+  font-family: "游明朝体", "Yu Mincho", YuMincho, 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'HiraMinProN-W3', "HGS明朝E", 'ＭＳ 明朝', 'MS Mincho', serif !important;
+  /*数字を縦書きにする*/
+  text-orientation: upright;
+  grid-column: 1/ 2;
+  grid-row: 7/ 8
+}
+
+.table-3 {
+  writing-mode: horizontal-tb;
+  margin: 0em 0em 0em 0em;
+  grid-column: 1/ 2;
+  grid-row: 6/ 7
+}
+
+.third {
+  padding: 0px 0px 35px;
+  writing-mode: horizontal-tb;
+
+  font-size: 16px;
+  font-family: "游明朝体", "Yu Mincho", YuMincho, 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'HiraMinProN-W3', "HGS明朝E", 'ＭＳ 明朝', 'MS Mincho', serif !important;
+  /*数字を縦書きにする*/
+  text-orientation: upright;
+  grid-column: 1/ 2;
+  grid-row: 5/ 6
+}
+
+.table-2 {
+  writing-mode: horizontal-tb;
+  margin: 0em 0em 0em 0em;
+  grid-column: 1/ 2;
+  grid-row: 4/ 5
+}
+
+.second {
+  padding: 0px 0px 35px;
+  writing-mode: horizontal-tb;
+
+  font-size: 16px;
+  font-family: "游明朝体", "Yu Mincho", YuMincho, 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'HiraMinProN-W3', "HGS明朝E", 'ＭＳ 明朝', 'MS Mincho', serif !important;
+  /*数字を縦書きにする*/
+  text-orientation: upright;
+  grid-column: 1/ 2;
+  grid-row: 3/ 4
+}
+
+.table-1 {
+  writing-mode: horizontal-tb;
+  grid-column: 1/ 2;
+  grid-row: 2/ 3;
+  margin: 0em 0em 0em 0em;
+}
+
+.First {
+  line-height: 183%;
+  margin: 0px 0em 0em;
+  padding: 20px 0px 35px;
+  writing-mode: horizontal-tb;
+  text-align: inherit;
+  display: inline-block;
+  font-size: 15px;
+  font-family: "游明朝体", "Yu Mincho", YuMincho, 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'HiraMinProN-W3', "HGS明朝E", 'ＭＳ 明朝', 'MS Mincho', serif !important;
+  /*数字を縦書きにする*/
+  text-orientation: upright;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2
+}
+
+.box2 {
+  height: 80vh;
+  text-align: right;
+  overflow-y: hidden;
+  margin: 8em 1em 35px 1em;
+}
+
+.typewriter2 {
+  /*ブロックのフロー方向を設定*/
+  -ms-writing-mode: tb-rl;
+  writing-mode: horizontal-tb;
+  text-orientation: upright;
+  /*右に配置する*/
+  text-align: center;
+  /*float: left;*/
+  /*margin: 0px 4% 10% 100%;
+  */
+  /*文字と文字の間隔を設定*/
+  letter-spacing: 7px;
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 2.83em;
+  margin-block-end: -1.17em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  padding: 20px 0px 50px;
+  /*タイプライター設定*/
+  width: 100%;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.typewriter2 span {
+  display: inline-block;
+  width: 7ch;
+  font: bold 150% Consolas, Monaco, monospace;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 400;
+  border-right: 3px solid transparent;
+  animation: typing 3s steps(23), caret 0.3s steps(1) infinite;
+}
+
+@keyframes typing {
+  from {
+      width: 0;
+  }
+}
+
+@keyframes caret {
+  50% {
+      border-right-color: currentColor;
+  }
+}
+
+.skill-img {
+  /*中央に寄せ・横並びにする*/
+  display: flex;
+  /*縦軸に対して中央に寄せる*/
+  justify-content: center;
+  /*横軸に対して中央に寄せる*/
+  align-items: center;
+  padding: 0em 0em 2em;
+  max-width: 361px;
+  width: 30%;
+  margin: auto;
+
+}
+.skill-desc{
+  padding: 0em 0em 2em;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  font: bold 140% Consolas, Monaco, monospace;;
+  
+  }
+
+.box3 {
+  height: 50vh;
+  text-align: right;
+  overflow-y: hidden;
+  margin: 8em 1em 35px 1em;
+}
+
+.typewriter3 {
+  /*ブロックのフロー方向を設定*/
+  -ms-writing-mode: tb-rl;
+  writing-mode: horizontal-tb;
+  text-orientation: upright;
+  /*右に配置する*/
+  text-align: center;
+  /*float: left;*/
+  /*margin: 0px 4% 10% 100%;
+  */
+  /*文字と文字の間隔を設定*/
+  letter-spacing: 7px;
+  /*display: block;*/
+  font-size: 1.5em;
+  margin-block-start: 2.83em;
+  margin-block-end: -1.17em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  padding: 20px 0px 50px;
+  /*タイプライター設定*/
+  width: 100%;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.typewriter3 span {
+  display: inline-block;
+  width: 7ch;
+  font: bold 150% Consolas, Monaco, monospace;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 400;
+  border-right: 3px solid transparent;
+  animation: typing 3s steps(23), caret 0.3s steps(1) infinite;
+}
+
+@keyframes typing {
+  from {
+      width: 0;
+  }
+}
+
+@keyframes caret {
+  50% {
+      border-right-color: currentColor;
+  }
+}
+
+.sixth {
+  display: flex;
+  justify-content: center;
+  padding: 0em 0em 2em;
+  /*文字と文字の間隔を設定*/
+  letter-spacing: 7px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.box4 {
+  height: 50vh;
+  text-align: right;
+  overflow-y: hidden;
+  margin: 8em 1em 35px 1em;
+}
+
+.typewriter4 {
+  /*ブロックのフロー方向を設定*/
+  -ms-writing-mode: tb-rl;
+  writing-mode: horizontal-tb;
+  text-orientation: upright;
+  /*右に配置する*/
+  text-align: center;
+  /*float: left;*/
+  /*margin: 0px 4% 10% 100%;
+  */
+  /*文字と文字の間隔を設定*/
+  letter-spacing: 7px;
+  /*display: block;*/
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: -1.17em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  padding: 20px 0px 50px;
+  /*タイプライター設定*/
+  width: 100%;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.typewriter4 span {
+  display: inline-block;
+  width: 10ch;
+  font: bold 150% Consolas, Monaco, monospace;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 400;
+  border-right: 3px solid transparent;
+  animation: typing 3s steps(20), caret 0.3s steps(1) infinite;
+}
+
+@keyframes typing {
+  from {
+      width: 0;
+  }
+}
+
+@keyframes caret {
+  50% {
+      border-right-color: currentColor;
+  }
+}
+
+.seventh {
+  display: flex;
+  justify-content: center;
+  padding: 0em 2em 2em;
+  /*文字と文字の間隔を設定*/
+  letter-spacing: 7px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.eighth {
+  text-align: center;
+  /*justify-content: center;*/
+  /*横軸に対して中央に寄せる*/
+  /*align-items: center;*/
+  padding: 0em 2em 2em;
+  /*文字と文字の間隔を設定*/
+  letter-spacing: 7px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.contact-button {
+  background-color: #8ea99b;
+  /*ボタン内の文字をセンターにする*/
+  flex-direction: column;
+  align-items: center;
+  /*余白設定*/
+  margin: 2em 0em 0em 0em;
+  /*ボタンの大きさを設定*/
+  padding: 13px 10px;
+  color: #000;
+  font-weight: bold;
+  /*枠を設定*/
+  border-radius: 30px;
+  /*お問合せボタンの色が消える速度*/
+  transition: all 0.3s;
+  /*文字下の罫線を設定*/
+  text-decoration: none;
+}
+
+.contact-button:hover {
+  background-color: transparent;
+  /*ホバーした時、バックグラウンドカラーが無くなる*/
+  border: 2px solid green;
+  /*ボタンに枠線をつける*/
+  cursor: pointer;
+
+}
+
+.social-end {
+  /*SNSアイコンを右寄りにする*/
+  display: flex;
+  margin-left: auto;
+  /*交差軸を中央に寄せる*/
+  align-items: center;
+  /*間隔を開けて配置する*/
+  justify-content: space-between;
+  /*上・右・下・左の余白を設定*/
+  padding: 2% 2% 0px 0%;
+}
+
+.social-end {
+  float: left;
+
+}
+
+.social-end a {
+  /*アイコンのバックグラウンドの大きさを設定*/
+  width: 45px;
+  height: 45px;
+  /*アイコンのバックグラウンドの形を設定*/
+  border-radius: 50%;
+  /*background-color: rgb(160, 192, 192);*/
+  background-color: #8ea99b;
+  display: flex;
+  align-items: center;
+  /*間隔を開けて配置する*/
+  justify-content: center;
+  /*文字下のボーダー削除*/
+  text-decoration: none;
+  /*余白設定*/
+  margin: 0px 10px;
+  /*文字色設定*/
+  color: #000;
+  /*文字の太さを設定*/
+  font-weight: bold;
+}
+
+.social-end a:hover {
+  background-color: #778899;
+  /*ホバーした時の文字色が変わるまでの時間を設定*/
+  transition: all 0.3s;
+  /*ホバーした時、ボタンサイズが変わる倍率を設定*/
+  transform: scale(1.3);
+}
+
+footer {
+  /*header余白の設定*/
+  height: 5.5em;
+  margin: 4% 0px 0%;
+  padding: 0% 0% 7.5%;
+  background-color: rgb(160, 192, 192);
+  font-weight: bold;
+}
